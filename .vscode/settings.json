@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "unityTest.sln"
+    "dotnet.defaultSolution": "Ejercicio 3.sln"
 }
