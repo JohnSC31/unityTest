@@ -7,6 +7,8 @@ TagManager:
   - Anchor
   - WIM_1
   - WIM_2
+  - Room1Area
+  - Room2Area
   layers:
   - Default
   - TransparentFX
