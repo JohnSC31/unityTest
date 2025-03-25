@@ -9,7 +9,7 @@ public class WIMFollower : MonoBehaviour
 
     void Update()
     {
-        if (target != null && realOrigin != null && wimOrigin != null)
+        /*if (target != null && realOrigin != null && wimOrigin != null)
         {
             // 1. Obtener el offset desde el centro real
             Vector3 offset = target.position - realOrigin.position;
@@ -22,6 +22,20 @@ public class WIMFollower : MonoBehaviour
 
             // 4. Aplicar también la rotación combinada (rotación relativa)
             transform.rotation = wimOrigin.rotation * target.rotation;
-        }
+        }*/
+        if (target != null && realOrigin != null && wimOrigin != null)
+        {
+            // 1. Obtener la posición relativa en el WIM (en relación con su centro)
+            Vector3 offsetInWIM = transform.position - wimOrigin.position;
+
+            // 2. Escalar la posición relativa al tamaño real
+            Vector3 offsetInReal = offsetInWIM / scaleFactor;
+
+            // 3. Aplicar la nueva posición al objeto real
+            target.position = realOrigin.position + offsetInReal;
+
+            // 4. Sincronizar también la rotación
+            target.rotation = transform.rotation;
+        }
     }
 }

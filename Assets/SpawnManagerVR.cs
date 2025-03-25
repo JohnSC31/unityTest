@@ -7,6 +7,7 @@ public class SpawnManagerVR : MonoBehaviour
     public Transform spawnPointWIM;
     public Transform realOrigin; // Centro de la habitación real
     public Transform wimOrigin;  // Centro del WIM
+    public GameObject room, wim;
     public float wimScaleFactor = 0.04f;
 
     public void SpawnObject()
@@ -15,9 +16,11 @@ public class SpawnManagerVR : MonoBehaviour
 
         // Instanciar en la habitación real
         GameObject objInRoom = Instantiate(objectPrefabs[randomIndex], spawnPointRoom.position, Quaternion.identity);
+        objInRoom.transform.SetParent(room.transform);
 
         // Instanciar en el WIM
         GameObject objInWIM = Instantiate(objectPrefabs[randomIndex], spawnPointWIM.position, Quaternion.identity);
+        objInWIM.transform.SetParent(wim.transform);
         objInWIM.transform.localScale *= wimScaleFactor;
 
         // Agregar script que sincronice posición y rotación
